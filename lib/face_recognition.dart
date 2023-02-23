@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/scheduler.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:camera/camera.dart';
 import 'package:face_recognition/faceModule/model.dart';
@@ -24,7 +25,7 @@ class _FaceRecognitionViewState extends State<FaceRecognitionView>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
@@ -38,7 +39,7 @@ class _FaceRecognitionViewState extends State<FaceRecognitionView>
 
   @override
   void dispose() async {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     if (_camera != null) {
       await _camera!.stopImageStream();
       await Future.delayed(const Duration(milliseconds: 200));
@@ -202,7 +203,9 @@ class _FaceRecognitionViewState extends State<FaceRecognitionView>
                                   const Duration(milliseconds: 400));
                               _camera = null;
                             }
-                            Navigator.pop(context);
+                            // Future.delayed(Duration(milliseconds: 10), () {
+                            //   Navigator.pop(context);
+                            // });
                           },
                           child: const Text('Simpan'))
                     ]),

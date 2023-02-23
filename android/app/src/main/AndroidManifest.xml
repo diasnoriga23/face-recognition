@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.face_recognition">
+    package="com.seka.face_recognition">
    <application
         android:label="face_recognition"
         android:name="${applicationName}"
